@@ -1,5 +1,6 @@
 const express = require("express");
 const {userController} = require("./routes/user.routes")
+const {rocketController}=require("./routes/rocket.routes")
 const { connection } = require("./config/db");
 const {authentication} = require("./middlewares/authentication")
 const cors = require("cors")
@@ -14,7 +15,7 @@ app.use(cors())
 
 app.use("/user", userController);
 app.use(authentication)
-
+app.use("/rocket", rocketController)
 app.listen(PORT, async () => {
   try {
     await connection;
